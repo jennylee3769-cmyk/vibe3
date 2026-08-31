@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vibe3</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+        background: #0b1020;
+        color: #f8fafc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 20% 20%, #4338ca55, transparent 36%),
+          radial-gradient(circle at 80% 70%, #0891b255, transparent 34%),
+          #0b1020;
+      }
+      main {
+        width: min(680px, 100%);
+        padding: clamp(32px, 8vw, 72px);
+        border: 1px solid #ffffff24;
+        border-radius: 28px;
+        background: #ffffff0d;
+        box-shadow: 0 24px 80px #00000055;
+        text-align: center;
+        backdrop-filter: blur(18px);
+      }
+      p { margin: 0 0 12px; color: #67e8f9; font-weight: 700; letter-spacing: .08em; }
+      h1 { margin: 0 0 18px; font-size: clamp(40px, 10vw, 76px); line-height: 1; }
+      .status { color: #cbd5e1; line-height: 1.7; font-weight: 400; letter-spacing: 0; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>VIBE3</p>
+      <h1>준비 중입니다</h1>
+      <p class="status">배포가 완료되었습니다.<br />이제 이곳에서 새로운 작업을 시작합니다.</p>
+    </main>
+  </body>
+</html>
