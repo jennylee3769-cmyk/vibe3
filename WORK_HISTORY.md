@@ -27,3 +27,7 @@
 - `docs/spec.md`의 수업 정보 표를 기준으로 `supabase/schema.sql` 생성
 - `items` 테이블 자동 UUID·생성일, nullable 작성자, 데이터 제약조건과 `updated_at` 자동 갱신 구성
 - 누구나 읽기, 로그인한 작성자만 생성·수정·삭제할 수 있는 Supabase RLS 정책 정의
+- 변경 전 첫 화면과 스타일을 `backups/2026-09-07_before_list_page/`에 보존
+- `/list/`에 Supabase `items` 조회 기반 수업 카드 목록 화면 추가
+- 로딩, 빈 목록, 연결 오류, 재시도 상태와 390px 모바일 카드 레이아웃 구현
+- 첫 화면의 `둘러보기` 버튼을 `/list/` 경로로 연결
