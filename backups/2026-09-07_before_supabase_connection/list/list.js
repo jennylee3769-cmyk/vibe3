@@ -8,7 +8,7 @@ const elements = {
   count: document.querySelector("[data-count]"),
 };
 
-const config = window.ELC_LIST_CONFIG ?? { apiUrl: "/api/items" };
+const config = window.ELC_SUPABASE_CONFIG ?? {};
 const dateFormatter = new Intl.DateTimeFormat("ko-KR", {
   year: "numeric",
   month: "long",
@@ -55,12 +55,27 @@ async function loadItems() {
   elements.count.textContent = "";
   showOnly("loading");
 
+  if (!config.url || !config.anonKey) {
+    elements.errorMessage.textContent =
+      "Supabase 연결 정보가 필요합니다. list/config.js에 프로젝트 URL과 anon key를 입력해 주세요.";
+    showOnly("error");
+    return;
+  }
+
   try {
-    const response = await fetch(config.apiUrl, { headers: { Accept: "application/json" } });
+    const endpoint = new URL("/rest/v1/items", config.url);
+    endpoint.searchParams.set("select", "title,region:location,created_at");
+    endpoint.searchParams.set("order", "created_at.desc");
+
+    const response = await fetch(endpoint, {
+      headers: {
+        apikey: config.anonKey,
+        Authorization: `Bearer ${config.anonKey}`,
+      },
+    });
 
     if (!response.ok) {
-      const detail = await response.json().catch(() => ({}));
-      throw new Error(detail.error || `요청 실패 (${response.status})`);
+      throw new Error(`요청 실패 (${response.status})`);
     }
 
     const items = await response.json();
@@ -79,7 +94,7 @@ async function loadItems() {
     items.forEach((item, index) => fragment.append(createCard(item, index)));
     elements.list.append(fragment);
   } catch (error) {
-    elements.errorMessage.textContent = `${error.message}. 서버 환경변수와 RLS 읽기 정책을 확인해 주세요.`;
+    elements.errorMessage.textContent = `${error.message}. 연결 정보와 RLS 읽기 정책을 확인해 주세요.`;
     showOnly("error");
   }
 }

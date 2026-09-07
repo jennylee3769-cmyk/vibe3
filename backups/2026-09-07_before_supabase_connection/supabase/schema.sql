@@ -11,7 +11,6 @@ create table if not exists public.items (
   description text not null,
   category text not null,
   schedule_text varchar(200) not null,
-  region varchar(100) not null,
   location varchar(200) not null,
   start_date date null,
   material text null,
@@ -32,17 +31,11 @@ create table if not exists public.items (
     check (status in ('draft', 'open', 'closed'))
 );
 
--- 기존 items 테이블에도 region 열을 안전하게 추가한다.
-alter table public.items add column if not exists region varchar(100);
-update public.items set region = location where region is null;
-alter table public.items alter column region set not null;
-
 comment on table public.items is 'ELC 영어 오프라인 중등 내신 수업 정보';
 comment on column public.items.author_id is
   '작성자 Supabase Auth 사용자 ID. 비워둘 수 있지만, NULL 항목은 일반 사용자가 수정하거나 삭제할 수 없다.';
 comment on column public.items.target_grades is '대상 중학교 학년 배열. 허용 값은 1, 2, 3';
 comment on column public.items.category is '학습 영역: grammar, reading, vocabulary, exam';
-comment on column public.items.region is '카드 목록에 표시할 지역명';
 comment on column public.items.status is '모집 상태: draft, open, closed';
 
 create index if not exists items_author_id_idx on public.items (author_id);

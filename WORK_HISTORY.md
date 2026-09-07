@@ -31,3 +31,6 @@
 - `/list/`에 Supabase `items` 조회 기반 수업 카드 목록 화면 추가
 - 로딩, 빈 목록, 연결 오류, 재시도 상태와 390px 모바일 카드 레이아웃 구현
 - 첫 화면의 `둘러보기` 버튼을 `/list/` 경로로 연결
+- Supabase 연결 전 `schema.sql`, `list/config.js`, `list/list.js`를 `backups/2026-09-07_before_supabase_connection/`에 보존
+- Supabase 키가 브라우저에 노출되지 않도록 `/api/items` 서버 함수와 환경변수 예시 추가
+- `items.region` 열과 중1·중2·중3 `[샘플]` 수업 3건을 추가하는 재실행 가능 `seed.sql` 준비
