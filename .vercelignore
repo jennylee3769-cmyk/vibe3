@@ -1,0 +1,9 @@
+# Project records stay in Git/GitHub but are not published as website files.
+backups/
+docs/
+records/
+references/
+PRESERVATION_POLICY.md
+WORK_HISTORY.md
+README.md
+desktop.ini
