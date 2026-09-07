@@ -24,3 +24,6 @@
 - `styles.css`, `script.js`, `assets/`를 분리해 반응형 메뉴, 스크롤 표시, 접근성 모션 대응 적용
 - 실제 기존 홈페이지에서 확인된 원장, 경력, 주소, 전화, 이메일 정보와 이미지로만 콘텐츠 구성
 - `.vercelignore`를 추가해 백업, 기획서, 작업 기록, 원본 아카이브는 GitHub에 보존하되 공개 웹 배포에서는 제외
+- `docs/spec.md`의 수업 정보 표를 기준으로 `supabase/schema.sql` 생성
+- `items` 테이블 자동 UUID·생성일, nullable 작성자, 데이터 제약조건과 `updated_at` 자동 갱신 구성
+- 누구나 읽기, 로그인한 작성자만 생성·수정·삭제할 수 있는 Supabase RLS 정책 정의
