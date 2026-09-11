@@ -1132,14 +1132,7 @@ addEventListener("keydown", e => {
 });
 
 buildOverview();
-const hashValue = location.hash.slice(1);
-const sessionMatch = hashValue.match(/^session-(\d)-slide-(\d+)$/);
-let start = parseInt(hashValue, 10);
-if (sessionMatch) {
-  const sessionItems = S.filter(x => x.s === Number(sessionMatch[1]));
-  const target = sessionItems[Math.max(0, Number(sessionMatch[2]) - 1)];
-  start = target ? S.indexOf(target) + 1 : 1;
-}
+const start = parseInt(location.hash.slice(1), 10);
 go(Number.isFinite(start) && start > 0 ? start - 1 : 0);
 </script>
 
