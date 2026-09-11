@@ -16,7 +16,7 @@ export const slides = [
 
 // 1·2·4·5강은 참고 이미지의 각 페이지를 읽어 HTML 교안으로 재구성한 데이터입니다.
 const page = (number, i, title, description, extra={}) => ({label:`${number}회차 · ${String(i).padStart(2,'0')}`, ...extra, title, description});
-const makeLecture = (number, title, description, pages, folder) => [{kind:'cover', label:`${number}회차`, title, description}, ...pages.map((x,i)=>({...x, label:x.label||`${number}회차 · ${String(i+2).padStart(2,'0')}`, sourceFolder:folder}))];
+const makeLecture = (number, title, description, pages, folder) => [{kind:'cover', label:`${number}회차`, title, description, referenceImage:`/lecture-crops/lecture${number}/01.png`}, ...pages.map((x,i)=>({...x, label:x.label||`${number}회차 · ${String(i+2).padStart(2,'0')}`, sourceFolder:folder, referenceImage:`/lecture-crops/lecture${number}/${String(i+2).padStart(2,'0')}.png`}))];
 
 const lecture1Pages = [
  page(1,2,'대부분의 수업은 마지막 날 배포하다 끝납니다.','그래서 이 과정은 순서를 뒤집습니다. 오늘 만드는 건 거의 텅 빈 페이지지만, 주소는 진짜입니다.',{highlight:'마지막 날 배포하다 끝납니다.'}),
