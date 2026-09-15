@@ -1,4 +1,4 @@
-export default async function itemsHandler(request, response) {
+module.exports = async function itemsHandler(request, response) {
   if (request.method !== "GET") {
     response.setHeader("Allow", "GET");
     return response.status(405).json({ error: "GET 요청만 사용할 수 있습니다." });

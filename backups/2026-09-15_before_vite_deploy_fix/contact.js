@@ -8,7 +8,7 @@ const escapeHtml = (value) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-export default async function contactHandler(request, response) {
+module.exports = async function contactHandler(request, response) {
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
     return response.status(405).json({ error: "POST 요청만 사용할 수 있습니다." });
