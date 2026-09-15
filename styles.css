@@ -559,7 +559,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-footer > p { margin: 0; font-family: var(--utility); }
 .mobile-actions { display: none; }
 
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.75,.25,1); }
+.reveal { opacity: 1; transform: none; transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.75,.25,1); }
 .reveal.is-visible { opacity: 1; transform: none; }
 :focus-visible { outline: 3px solid var(--butter); outline-offset: 4px; }
 
@@ -690,4 +690,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
   .reveal { opacity: 1; transform: none; }
   .topdown-panels article { animation: none; }
+}
+
+/* ELC accessibility and resilience improvements, 2026-09-15. */
+.reveal.reveal-pending:not(.is-visible) { opacity: 0; transform: translateY(26px); }
+#guide, #contact, #main { scroll-margin-top: 100px; }
+.privacy-details { font-size: 13px; line-height: 1.8; color: var(--muted); }
+.privacy-details summary { cursor: pointer; font-weight: 700; }
+.privacy-details ul { margin: 10px 0; padding-left: 20px; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal.reveal-pending:not(.is-visible) { opacity: 1; transform: none; }
+}
+@media (max-width: 760px) {
+  .site-header.is-scrolled:has(.main-nav.is-open) { backdrop-filter: none; }
+  .main-nav { height: 100dvh; overflow-y: auto; }
+  .mobile-actions { bottom: max(10px, env(safe-area-inset-bottom)); }
+}
+
+picture { display: block; }
+.photo-frame picture { border-radius: inherit; }
+.hero h1, .guide-heading h2, .contact h2 { word-break: keep-all; overflow-wrap: break-word; }
+@media (min-width: 761px) {
+  .hero h1 { font-size: clamp(38px, 3.8vw, 56px); }
+  .hero h1 em { white-space: normal; }
 }

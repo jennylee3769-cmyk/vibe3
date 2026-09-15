@@ -159,3 +159,29 @@ footer p { margin: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* ELC grade filtering and class availability. */
+.grade-filter { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; font-weight: 700; }
+.grade-filter select { min-height: 44px; padding: 8px 36px 8px 12px; border: 1px solid var(--ink); border-radius: 6px; color: var(--ink); background: var(--white); font: inherit; }
+.class-status { float: right; padding: 5px 9px; border-radius: 5px; background: var(--mist); color: var(--ink); font-size: 12px; font-weight: 700; }
+.class-status.closed { background: #e8e5df; color: #525a56; }
+.class-card h3, .class-card dd { overflow-wrap: anywhere; }
+.class-card dl { grid-template-columns: 44px minmax(0, 1fr); }
+@media (min-width: 761px) and (max-width: 1000px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Default middle/high-school course cards, 2026-09-15. */
+.class-card { display: flex; flex-direction: column; min-width: 0; padding: 28px; }
+.card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.class-status { float: none; }
+.class-status.inquiry { background: #f7e4bc; color: #654b19; }
+.class-card h3 { margin: 26px 0 24px; font-size: 28px; }
+.class-card dl { margin-bottom: 28px; gap: 12px; font-size: 14px; line-height: 1.8; }
+.class-card dd { word-break: keep-all; }
+.class-consultation { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 48px; margin-top: auto; border: 1px solid var(--ink); border-radius: 6px; background: var(--ink); color: var(--white); font-size: 14px; font-weight: 800; text-decoration: none; }
+.class-consultation:hover { background: var(--ink-deep); }
+.class-card::after { pointer-events: none; }
+@media (max-width: 760px) {
+  .class-card { padding: 24px; }
+  .grade-filter { flex-wrap: wrap; }
+  .class-card h3 { font-size: 27px; }
+}
