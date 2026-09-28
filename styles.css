@@ -513,7 +513,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .compact-list li { position: relative; padding: 14px 12px 14px 34px; border-bottom: 1px solid var(--line); font-weight: 700; }
 .compact-list li::before { position: absolute; left: 10px; color: var(--coral); content: "✓"; }
 .panel-profile { display: grid; grid-template-columns: 180px 1fr; gap: 34px; align-items: center; }
-.panel-profile img { aspect-ratio: 0.82; object-fit: cover; filter: saturate(0.8); }
+.panel-profile img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; filter: saturate(0.8); }
 @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
 
 .contact-form { display: grid; gap: 18px; padding: 34px; background: var(--white); color: var(--ink-deep); border-radius: 12px; }
