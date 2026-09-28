@@ -1,0 +1,12 @@
+.auth-nav { display: flex; min-width: 0; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; }
+.auth-nav a, .auth-nav button { padding: 9px 12px; border: 1px solid rgba(23,63,58,.24); border-radius: 999px; background: rgba(255,253,248,.78); color: #173f3a; font: inherit; text-decoration: none; cursor: pointer; }
+.auth-nav a:hover, .auth-nav button:hover { background: #173f3a; color: #fffdf8; }
+.auth-nav button:disabled { cursor: wait; opacity: .6; }
+.auth-email { max-width: 190px; overflow: hidden; color: #63736e; text-overflow: ellipsis; white-space: nowrap; }
+.header-actions { display: flex; min-width: 0; align-items: center; gap: 14px; }
+@media (max-width: 760px) {
+  .auth-nav { gap: 6px; }
+  .auth-nav a, .auth-nav button { padding: 8px 9px; }
+  .auth-email { max-width: 112px; }
+}
+@media (max-width: 520px) { .auth-email { display: none; } }

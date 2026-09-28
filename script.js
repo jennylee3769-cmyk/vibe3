@@ -1,3 +1,5 @@
+import { mountAuthNavigation } from "./auth/session-ui.js";
+
 const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector("[data-menu-button]");
 const menu = document.querySelector("[data-menu]");
@@ -148,3 +150,5 @@ contactForm?.addEventListener("submit", async (event) => {
     submitButton.disabled = false;
   }
 });
+
+mountAuthNavigation();

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173f3a" />
+    <meta name="description" content="ELC영어공부방 새 수업 등록" />
+    <title>새 수업 올리기 | ELC영어공부방</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/auth/auth-nav.css" />
+    <link rel="stylesheet" href="/new/new.css" />
+    <script src="/new/new.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#item-form">등록 폼으로 바로가기</a>
+    <header class="new-header">
+      <a class="brand" href="/" aria-label="ELC영어공부방 첫 화면으로"><span class="brand-seal" aria-hidden="true">ELC</span><span class="brand-copy"><strong>ELC영어공부방</strong><small>Middle School English</small></span></a>
+      <nav class="auth-nav" aria-label="계정 메뉴" data-auth-nav><span>로그인 확인 중…</span></nav>
+    </header>
+    <main>
+      <section class="new-intro" aria-labelledby="page-title">
+        <div><p class="eyebrow"><span>Class Notes</span> <b data-mode-label>새 수업 올리기</b></p><h1 id="page-title" data-page-title>수업 정보를<br /><em>차근차근 적어주세요.</em></h1></div>
+        <p>목록과 상담 안내에 필요한 정보입니다. 별표가 있는 항목은 꼭 입력하고, 아직 정하지 않은 선택 항목은 비워둘 수 있습니다.</p>
+      </section>
+      <section class="form-shell" aria-labelledby="form-title">
+        <div class="account-note" data-protected-status role="status">로그인 상태를 확인하고 있습니다…</div>
+        <div data-protected-content hidden>
+          <div class="form-heading"><div><p>작성 계정</p><strong data-user-email></strong></div><p>ID와 작성일·수정일은 저장할 때 자동으로 만들어집니다.</p></div>
+          <form id="item-form" class="item-form" novalidate>
+            <h2 id="form-title" data-form-title>수업 정보</h2>
+            <div class="field-grid">
+              <label class="field field-wide"><span>수업명 <b>필수</b></span><input name="title" type="text" maxlength="100" autocomplete="off" placeholder="예: 중2 문법·독해 집중" required /></label>
+              <fieldset class="field field-wide grade-field"><legend>대상 학년 <b>필수</b></legend><div class="choice-row"><label><input name="target_grades" type="checkbox" value="1" /> 중1</label><label><input name="target_grades" type="checkbox" value="2" /> 중2</label><label><input name="target_grades" type="checkbox" value="3" /> 중3</label></div></fieldset>
+              <label class="field field-wide"><span>수업 소개 <b>필수</b></span><textarea name="description" rows="5" placeholder="학습 목표와 수업 내용을 적어주세요." required></textarea></label>
+              <label class="field"><span>학습 영역 <b>필수</b></span><select name="category" required><option value="">선택해 주세요</option><option value="grammar">문법</option><option value="reading">독해</option><option value="vocabulary">어휘</option><option value="exam">시험 대비</option></select></label>
+              <label class="field"><span>모집 상태 <b>필수</b></span><select name="status" required><option value="draft">작성 중</option><option value="open" selected>모집 중</option><option value="closed">마감</option></select></label>
+              <label class="field field-wide"><span>수업 일정 <b>필수</b></span><input name="schedule_text" type="text" maxlength="200" placeholder="예: 매주 화·목 오후 7시" required /></label>
+              <label class="field field-wide"><span>수업 장소 <b>필수</b></span><input name="location" type="text" maxlength="200" placeholder="예: 인천광역시 부평구 부개동" required /></label>
+              <label class="field"><span>시작일 <i>선택</i></span><input name="start_date" type="date" /></label>
+              <label class="field"><span>정원 <i>선택</i></span><input name="capacity" type="number" min="0" step="1" inputmode="numeric" placeholder="예: 8" /></label>
+              <label class="field field-wide"><span>교재 <i>선택</i></span><input name="material" type="text" placeholder="교재명 또는 준비물" /></label>
+              <label class="field field-wide image-field"><span>대표 이미지 <i>선택</i></span><input name="representative_image" type="file" accept="image/jpeg,image/png,image/webp,image/gif" aria-describedby="image-help image-selection" /><small id="image-help">JPG, PNG, WebP 또는 GIF 파일 1장 · 최대 5MB</small><span id="image-selection" class="image-selection" data-image-selection aria-live="polite">선택된 사진이 없습니다.</span></label>
+            </div>
+            <div class="form-feedback" data-form-status role="alert" aria-live="assertive"></div>
+            <div class="form-actions"><a href="/list/" data-cancel-link>취소하고 목록으로</a><button type="submit" data-submit>수업 저장하기</button></div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

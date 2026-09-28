@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173f3a" />
+    <meta name="description" content="ELC영어공부방 내가 등록한 수업 관리" />
+    <title>마이페이지 | ELC영어공부방</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/auth/auth-nav.css" />
+    <link rel="stylesheet" href="/mypage/mypage.css" />
+    <script src="/mypage/mypage.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#my-items">내 수업 목록으로 바로가기</a>
+    <header class="mypage-header"><a class="brand" href="/" aria-label="ELC영어공부방 첫 화면으로"><span class="brand-seal" aria-hidden="true">ELC</span><span class="brand-copy"><strong>ELC영어공부방</strong><small>Middle School English</small></span></a><nav class="auth-nav" aria-label="계정 메뉴" data-auth-nav><span>로그인 확인 중…</span></nav></header>
+    <main>
+      <section class="mypage-intro"><div><p class="eyebrow"><span>My Class Notes</span> 마이페이지</p><h1>내가 올린 수업을<br /><em>한곳에서 관리하세요.</em></h1></div><p><strong data-user-email></strong> 계정으로 등록한 수업만 표시됩니다. 다른 사용자의 글은 볼 수도, 바꿀 수도 없습니다.</p></section>
+      <section class="my-items" id="my-items" aria-labelledby="my-items-title">
+        <div class="section-heading"><div><p>MY CLASSES</p><h2 id="my-items-title">내 수업</h2></div><a href="/new/">새 수업 올리기 <span aria-hidden="true">＋</span></a></div>
+        <div class="status-panel" data-status role="status" aria-live="polite">내 수업을 불러오고 있어요.</div>
+        <div class="my-grid" data-list aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

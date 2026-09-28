@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/list/list.css" />
+    <link rel="stylesheet" href="/auth/auth-nav.css" />
     <script src="/list/config.js" type="module"></script>
     <script src="/list/list.js" type="module"></script>
   </head>
@@ -27,7 +28,10 @@
           <small>Middle School English</small>
         </span>
       </a>
-      <a class="home-link" href="/">첫 화면 <span aria-hidden="true">↗</span></a>
+      <div class="header-actions">
+        <a class="home-link" href="/">첫 화면 <span aria-hidden="true">↗</span></a>
+        <nav class="auth-nav" aria-label="계정 메뉴" data-auth-nav><a href="/login/">로그인</a><a href="/signup/">회원가입</a></nav>
+      </div>
     </header>
 
     <main>
@@ -48,10 +52,15 @@
             <p class="section-number">01 · AVAILABLE CLASSES</p>
             <h2 id="list-heading">등록된 수업</h2>
           </div>
-          <p class="item-count" data-count aria-live="polite"></p>
+          <div class="list-heading-actions"><p class="item-count" data-count aria-live="polite"></p><a class="create-item-link" href="/new/">올리기 <span aria-hidden="true">＋</span></a></div>
         </div>
 
-        <label class="grade-filter">학년 선택<select data-grade><option value="all">전체 학년</option><option value="m1">중1</option><option value="m2">중2</option><option value="m3">중3</option><option value="h1">고1</option><option value="h2">고2</option><option value="h3">고3</option></select></label>
+        <form class="search-filters" data-filters role="search" aria-label="수업 검색과 필터" novalidate>
+          <label class="search-field"><span>수업명 검색</span><input type="search" maxlength="100" placeholder="예: 중2 문법" data-query /></label>
+          <label><span>지역</span><select data-region><option value="all">전체 지역</option><option value="인천 부평구 부개동">인천 부평구 부개동</option></select></label>
+          <label><span>학년</span><select data-grade><option value="all">전체 학년</option><option value="m1">중1</option><option value="m2">중2</option><option value="m3">중3</option><option value="h1">고1</option><option value="h2">고2</option><option value="h3">고3</option></select></label>
+          <button type="button" class="clear-filters" data-clear>조건 지우기</button>
+        </form>
         <noscript><p>수업 목록을 보려면 JavaScript를 켜 주세요. <a href="tel:010-5757-3769">전화로 수업 문의하기</a></p><style>.loading-panel { display: none; }</style></noscript>
         <div class="status-panel loading-panel" data-loading hidden role="status" aria-live="polite">
           <span class="loader" aria-hidden="true"></span>
