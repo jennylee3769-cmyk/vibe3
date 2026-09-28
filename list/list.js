@@ -1,11 +1,10 @@
-import { DEFAULT_COURSES } from "./default-courses.js";
 import { mountAuthNavigation } from "../auth/session-ui.js";
 
-const elements = Object.fromEntries(["loading", "empty", "error", "retry", "list", "count", "grade", "query", "region", "clear", "empty-title", "empty-description"].map((key) => [key, document.querySelector(`[data-${key}]`)]));
+const elements = Object.fromEntries(["loading", "empty", "error", "error-message", "retry", "list", "count", "grade", "query", "region", "clear", "empty-title", "empty-description"].map((key) => [key, document.querySelector(`[data-${key}]`)]));
 const config = window.ELC_LIST_CONFIG ?? { apiUrl: "/api/items" };
 const ALLOWED_REGIONS = new Set([...elements.region.options].map((option) => option.value));
 const ALLOWED_GRADES = new Set([...elements.grade.options].map((option) => option.value));
-let items = DEFAULT_COURSES;
+let items = [];
 let loading = false;
 
 function showOnly(name) {
@@ -95,12 +94,16 @@ async function loadItems() {
     const result = await response.json();
     if (!Array.isArray(result)) throw new Error("Invalid course response");
     const remoteItems = result.map(normalizeRemoteItem).filter(Boolean);
-    items = remoteItems.length ? remoteItems : DEFAULT_COURSES;
+    items = remoteItems;
     renderItems();
-  } catch {
-    // Offline, missing configuration, timeouts, and invalid responses retain the approved courses.
-    items = DEFAULT_COURSES;
-    renderItems();
+  } catch (error) {
+    items = [];
+    elements.list.replaceChildren();
+    elements.count.textContent = "0개의 수업";
+    elements["error-message"].textContent = error?.name === "AbortError"
+      ? "수업 정보를 불러오는 데 시간이 오래 걸리고 있어요. 잠시 후 다시 시도해 주세요."
+      : "수업 정보를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.";
+    showOnly("error");
   } finally {
     clearTimeout(timeout);
     loading = false;
@@ -113,8 +116,6 @@ elements.region.addEventListener("change", applyFilters);
 elements.grade.addEventListener("change", applyFilters);
 elements.clear.addEventListener("click", () => { elements.query.value = ""; elements.region.value = "all"; elements.grade.value = "all"; applyFilters(); elements.query.focus(); });
 window.addEventListener("popstate", () => { readFiltersFromUrl(); renderItems(); });
-// Filters and consultations are usable immediately, even while the API is pending.
 readFiltersFromUrl();
-renderItems();
 loadItems();
 mountAuthNavigation();
